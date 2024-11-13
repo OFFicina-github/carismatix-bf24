@@ -927,8 +927,8 @@ h3.heading.h2 {
 }
 
 body#index .shopify-section--slideshow section.section {
-  display: flex;
-  margin: 10px auto 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
 body#index .shopify-section--slideshow section.section .slideshow {
@@ -3327,4 +3327,40 @@ h2.swym-wishlist-main-title:first-of-type {
   .announcement-bar--multiple {
     justify-content: center;
   }
+}
+#hero_bf2024 {
+  position: relative;
+}
+#hero_bf2024 img {
+  position: relative;
+  z-index: 1;
+}
+#hero_bf2024 .hero_content {
+  position: absolute;
+  z-index: 2;
+  bottom: 20vh;
+  left: 10vw;
+  color: #fff;
+}
+#hero_bf2024 .hero_content p {
+  font-weight: 600;
+  width: 220px;
+  line-height: 1.25;
+}
+#hero_bf2024 .hero_content p span {
+  color: #4bdd0e;
+}
+#hero_bf2024 .hero_content h1 {
+  font-size: 60px;
+  line-height: 1;
+  margin: 30px 0;
+  width: 610px;
+}
+
+.bf2024_section .green_box {
+  background-color: #4bdd0e;
+  background-image: url(https://cdn.shopify.com/s/files/1/0660/5252/2209/files/right_trasparenza.png?v=1664439438);
+  background-size: 45% auto;
+  background-position: 100% bottom;
+  background-repeat: no-repeat;
 }/*# sourceMappingURL=off_custom.css.map */
