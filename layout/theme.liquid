@@ -1,0 +1,311 @@
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing this theme as much as we did for
+  developing it. We have put a lot of work to make this theme as developer friendly as possible by offering you
+  hooks to integrate into critical parts of the theme. You will find the complete technical documentation (including
+  all events, dependencies...) in the "custom.js" file, located in the Assets folder.
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<!doctype html>
+
+{%- assign direction = 'ltr' -%}
+{%- case request.locale.iso_code -%}
+  {%- when 'ar' or 'arc' or 'dv' or 'fa' or 'ha' or 'he' or 'kwh' or 'ks' or 'ku' or 'ps' or 'ur' or 'yi' -%}
+    {%- assign direction = 'rtl' -%}
+{%- endcase -%}
+
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ direction }}">
+  <head> 
+    <script
+  id="Cookiebot"
+  src="https://consent.cookiebot.com/uc.js"
+  data-cbid="f9a92597-e780-4146-a5d8-8f412b4b5731"
+  type="text/javascript"
+  defer
+></script>
+  
+    <script src='{{ 'product_restore_email.js' | asset_url }}' defer='defer' ></script> 
+    <script id='em_product_variants' type='application/json'>
+        {{ product.variants | json }}
+    </script>
+    <script id='em_product_selected_or_first_available_variant' type='application/json'>
+        {{ product.selected_or_first_available_variant | json }}
+    </script>
+    <script id='em_product_metafields' type='application/json'>
+        {{ shop.metafields.email-sealapps-app.effective-time | json }}
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="theme-color" content="{{ settings.header_background }}">
+{% if handle contains 'carpro-d-quartz-professional' or handle contains 'richiesta-inviata' or handle contains 'carpro-cquartz-professional' or handle contains 'ceramic-guard-coating-sicarbon' or handle contains 'carpro-cquartz-finest-reserve-kit' or handle contains 'sti-comby-3000' or handle contains 'sti-comby-3500' or handle contains 'sti-comby' or handle contains 'sti-comby-9000' or handle contains 'macchina-vapore-professionale-sti-comby-6000' %}
+<meta name="robots" content="noindex">
+{% endif %}
+    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% endif %}</title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '96x96' }}" type="image/png">
+    {%- endif -%}
+
+    {%- comment -%}Few prefech to increase performance on commonly used third-parties{%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+    {%- unless settings.heading_font.system? and settings.text_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap" rel="stylesheet">
+
+    {%- comment -%}Preload important resources{%- endcomment -%}
+    <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'vendor.js' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'custom_bf.js' | asset_url }}">
+    <link rel="preload" as="style" href="{{ 'off_custom.css' | asset_url }}">
+    <link rel="preload" as="style" href="{{ 'off_custom_star.css' | asset_url }}">
+    <link rel="preload" as="style" href="{{ 'off_blackfriday.css' | asset_url }}">
+
+    
+    {%- comment -%}
+      IMPLEMENTATION NOTE: for improving performance, Focal tries to preload images on known pages (such as blog page,
+      product or collection pages). In order to keep a main JS file size minimal, the theme also lazyloads non-essential
+      libraries (such as PhotoSwipe or Flickity) and only loads them on demand.
+    {%- endcomment -%}
+    {%- if request.page_type == 'product' -%}
+      {%- assign selected_media = product.selected_variant.featured_media | default: product.featured_media -%}
+
+      <link rel="preload" as="fetch" href="{{ product.url }}.js" crossorigin>
+      <link rel="preload" as="image" imagesizes="(max-width: 999px) calc(100vw - 48px), 640px" imagesrcset="{% render 'image-attributes', image: selected_media, sizes: '400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800', sizes_only: true %}">
+
+      {%- if product.media.size > 1 -%}
+        <link rel="preload" as="script" href="{{ 'flickity.js' | asset_url }}">
+      {%- endif -%}
+    {%- elsif request.page_type == 'collection' and collection.image -%}
+      <link rel="preload" as="image" media="(max-width: 740px)" imagesizes="100vw" imagesrcset="{% render 'image-attributes', image: collection.image, sizes: '400,500,600,700,800,900,1000', height_constraint: 600, crop: 'center', sizes_only: true %}">
+      <link rel="preload" as="image" media="(min-width: 741px)" imagesizes="100vw" imagesrcset="{% render 'image-attributes', image: collection.image, sizes: '600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600', sizes_only: true %}">
+    {%- endif -%}
+
+    {% render 'social-meta-tags' %}
+    {% render 'microdata-schema' %}
+    {% render 'css-variables', direction: direction %}
+    {% render 'js-variables', direction: direction %}
+
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'off_custom.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'off_custom_star.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'off_blackfriday.css' | asset_url }}">
+
+    <script src="{{ 'vendor.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom_bf.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+{% render "cookie-consent" %}
+
+  
+ <!--begin-boost-pfs-filter-css-->
+   {% render 'boost-pfs-style' %}
+ <!--end-boost-pfs-filter-css-->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap');
+</style>
+<meta name="google-site-verification" content="ddyQ-yhz_zjjBHWn3kaDwgLPA1KlZ4-w7KCgDRSlFmE" />
+
+{% if content_for_header contains 'fastbundle.co' %}
+    {% render 'fast_bundle_service' %}
+{% endif %}
+
+{% include "ot-cookies" %}{% include 'analyzify-gtm-body' %}
+{% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}{% unless boostersnippet contains "Liquid error" %}{{ boostersnippet }}{% endunless %}
+
+</head>
+
+  {%- assign feature_classes = '' -%}
+
+  {%- if settings.show_image_zoom -%}
+    {% assign feature_classes = feature_classes | append: ' features--image-zoom' %}
+  {%- endif -%}
+
+{% for collection in product.collections %}
+  {% if collection.handle == 'san-valentino' %}
+    {% assign san_valentino_bodyclass = 'san_valention_collection_prod' %}
+  {% endif %}
+{% endfor %}
+
+  <body id="{{ template | handleize }}" class="no-focus-outline {{ feature_classes }} {{ san_valentino_bodyclass }}
+  {% if product.id %}product-id-{{ product.id }}{% endif %}" data-instant-allow-query-string>
+    {%- comment -%}Common SVG definitions that we are re-using in several places{%- endcomment -%}
+    <svg class="visually-hidden">
+      <linearGradient id="rating-star-gradient-half">
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))" />
+        <stop offset="50%" stop-color="rgb(var(--product-star-rating))" stop-opacity="0.4" />
+      </linearGradient>
+    </svg>
+
+    <a href="#main" class="visually-hidden skip-to-content">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    <loading-bar class="loading-bar"></loading-bar>
+
+    {%- if request.page_type != 'gift_card' and request.page_type != 'password' -%}
+      {%- section 'announcement-bar' -%}
+      {%- section 'popup' -%}
+      {%- section 'header' -%}
+
+      {%- unless settings.cart_type == 'page' or request.page_type == 'cart' -%}
+        {%- section 'mini-cart' -%}
+      {%- endunless -%}
+    {%- endif -%}
+
+    <div id="main" role="main" class="anchor">
+      {%- comment -%}
+      IMPLEMENTATION NOTE: on collection and search page, the theme was designed to show on mobile the filter bar and/or sort
+        by at the very top of the page. However, due to the fact that sections are isolated, I had to move the code
+        here. Then, the collection section, based on the selected settings, will eventually hide those elements in CSS
+      {%- endcomment -%}
+      {%- if request.page_type == 'collection' or request.page_type == 'search' -%}
+        {%- assign active_filters_count = 0 -%}
+
+        {%- if request.page_type == 'collection' -%}
+          {%- assign filters = collection.filters -%}
+        {%- else -%}
+          {%- assign filters = search.filters -%}
+        {%- endif -%}
+
+        {%- for filter in filters -%}
+          {%- if filter.type == 'list' -%}
+            {%- assign active_filters_count = active_filters_count | plus: filter.active_values.size -%}
+          {%- elsif filter.type == 'price_range' and filter.min_value.value or filter.max_value.value -%}
+            {%- assign active_filters_count = active_filters_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- assign is_toolbar_collapsed = false -%}
+
+        {%- if request.page_type == 'search' and search.results.first.object_type != 'product' and search.results_count > 0 -%}
+          {%- assign is_toolbar_collapsed = true -%}
+        {%- endif -%}
+
+        <div id="mobile-facet-toolbar" class="mobile-toolbar {% if is_toolbar_collapsed %}is-collapsed{% endif %} hidden-lap-and-up">
+          <button is="toggle-button" class="mobile-toolbar__item mobile-toolbar__item--filters {% if active_filters_count > 0 %}has-filters{% endif %}" aria-expanded="false" aria-controls="facet-filters" style="display: none">
+            {%- render 'icon' with 'filters' -%}
+            <span class="mobile-toolbar__item-label">{{- 'collection.general.filters' | t -}}</span>
+          </button>
+
+          <button is="toggle-button" class="mobile-toolbar__item mobile-toolbar__item--sort" aria-expanded="false" aria-controls="sort-by-popover" style="display: none">
+            <span class="mobile-toolbar__item-label">{{- 'collection.general.sort_by' | t -}}</span>
+            {%- render 'icon' with 'chevron' -%}
+          </button>
+        </div>
+      {%- endif -%}
+
+      {{ content_for_layout }}
+
+      {%- unless request.page_type == 'index' or request.page_type == 'password' or request.page_type == 'gift_card' -%}
+        {%- section 'static-text-with-icons' -%}
+        {%- section 'static-newsletter' -%}
+      {%- endunless -%}
+    </div>
+
+    {%- if request.page_type != 'gift_card' and request.page_type != 'password' -%}
+      {%- section 'footer' -%}
+    {%- endif -%}
+  
+ <!--begin-boost-pfs-js-->
+   {% render 'boost-pfs' %}
+ <!--end-boost-pfs-js-->
+
+{% include 'swymSnippet' %}
+
+<!-- Stamped - Begin Script-->
+<script async type="text/javascript" data-api-key="YOUR_PUBLIC-API-KEY" id="stamped-script-widget" src="https://cdn1.stamped.io/files/widget.min.js"></script>
+<!-- Stamped - End Script -->
+
+<script>
+if (
+  document.querySelector(`span.stamped-summary-recommend-label`) ||
+  document.querySelector("#stamped-sort-select > option:nth-child(1)") ||
+document.querySelector("#stamped-sort-select > option:nth-child(2)") ||
+document.querySelector("#stamped-sort-select > option:nth-child(3)") ||
+document.querySelector("#stamped-sort-select > option:nth-child(4)") ||
+document.querySelector("#stamped-sort-select > option:nth-child(5)") ||
+document.querySelector("fieldset.stamped-form-review > div.stamped-form-review-body > label") ||
+document.querySelector(".stamped-form-review-recommend-label")
+){
+  setTimeout(
+    function()
+    {
+      
+document.querySelector(`span.stamped-summary-recommend-label`).textContent='dei recensori consigliano questo prodotto';
+document.querySelector("#stamped-sort-select > option:nth-child(1)").textContent='Ordina';
+document.querySelector("#stamped-sort-select > option:nth-child(2)").textContent='Più recente';
+document.querySelector("#stamped-sort-select > option:nth-child(3)").textContent='Dalla valutazione più alta';
+document.querySelector("#stamped-sort-select > option:nth-child(4)").textContent='Dalla valutazione più bassa';
+document.querySelector("#stamped-sort-select > option:nth-child(5)").textContent='La maggior parte dei voti';
+document.querySelector("fieldset.stamped-form-review > div.stamped-form-review-body > label").textContent=`Come è stata la tua esperienza generale nell'utilizzo del prodotto?`;
+document.querySelector(".stamped-form-review-recommend-label").textContent='Raccomandi questo prodotto?';
+ console.log('trad');
+ }, 5000);
+}
+ 
+</script>
+
+<style>
+.new-review-form.stamped-visible .stamped-form-review-recommend .stamped-form-label {
+  text-transform: capitalize;}
+
+    </style>
+  {% render 'th-bundle-product' %}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+  <!-- BLACK FRDAY 2023 -->
+  
+
+
+
+<div id="counter_box">
+    <p>Qualcosa sta per accadere</p>
+    <div id="counter"></div>
+    <p>rimani connesso [...]</p>
+</div>
+
+<!-- <div id="popup_box_bf">
+  <div id="counter_box_popup">
+      <p>Qualcosa sta per accadere</p>
+      <div id="counter2"><div>
+          <h2>7</h2>
+          <h4>gg</h4>
+          </div>
+          <div class="linea"></div>
+          <div>
+            <h2>12</h2>
+            <h4>hh</h4>
+          </div>
+          <div class="linea"></div>
+          <div>
+            <h2>46</h2>
+            <h4>mm</h4>
+          </div>
+          <div class="linea"></div>
+          <div>
+            <h2>36</h2>
+            <h4>ss</h4>
+          </div> </div>
+      <p>rimani connesso [...]</p>
+      <a>Chiudi questa finestra</a>
+  </div>
+</div> -->
+
+          
+</body>
+</html>
