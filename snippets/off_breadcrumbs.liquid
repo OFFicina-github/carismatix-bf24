@@ -1,0 +1,64 @@
+{% style %}
+  .breadcrumbs_container a,
+  .breadcrumbs_container span {
+    font-size: 10px;
+  }
+  .breadcrumbs_container a:hover {
+    text-decoration: underline !important;
+  }
+  .breadcrumbs_container a.no_hover:hover {
+    text-decoration: none !important;
+  }
+  .breadcrumbs_container a.no_hover {
+    opacity: 0.5;
+  }
+{% endstyle %}
+
+{% assign current_collection_handle = collection.handle %}
+{% assign menu_filtri = linklists['menu-fittizio'].links %}
+
+<div class="breadcrumbs_container">
+  <a href="{{ shop.url }}">Home</a>
+  <!-- <a href="/collections/all">All products</a> -->
+  {% if current_collection_handle != 'all' %}
+    {% assign breadcrumb_found = false %}
+    {% for livello_1 in menu_filtri %}
+      {% if livello_1.object.handle == current_collection_handle %}
+        <span> - </span>
+        <a class="no_hover">{{ livello_1.title }}</a>
+        {% assign breadcrumb_found = true %}
+      {% elsif livello_1.links %}
+        {% for livello_2 in livello_1.links %}
+          {% if livello_2.object.handle == current_collection_handle %}
+            <span> - </span>
+            <a href="{{ livello_1.url }}">{{ livello_1.title }}</a>
+            <span> - </span>
+            <a class="no_hover">{{ livello_2.title }}</a>
+            {% assign breadcrumb_found = true %}
+          {% elsif livello_2.links %}
+            {% for livello_3 in livello_2.links %}
+              {% if livello_3.object.handle == current_collection_handle %}
+                <span> - </span>
+                <a href="{{ livello_1.url }}">{{ livello_1.title }}</a>
+                <span> - </span>
+                <a href="{{ livello_2.url }}">{{ livello_2.title }}</a>
+                <span> - </span>
+                <a class="no_hover">{{ livello_3.title }}</a>
+                {% assign breadcrumb_found = true %}
+              {% endif %}
+              {% if breadcrumb_found %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          {% if breadcrumb_found %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if breadcrumb_found %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>

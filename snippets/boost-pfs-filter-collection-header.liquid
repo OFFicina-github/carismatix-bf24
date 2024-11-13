@@ -1,0 +1,83 @@
+
+<div class="boost-pfs-filter-collection-header-wrapper boost-pfs-filter-collection-image {% if collection.image and show_collection_image %}boost-pfs-filter-collection-has-image{% endif %}" {% if collection.image and show_collection_image %} style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});" {% endif %}>
+	<div class="boost-pfs-container-default-{{ layout_type }}">
+		<div class="boost-pfs-section-header">
+			<h1 class="boost-pfs-filter-collection-header">
+				<span>
+			{{ collection.title }}
+				<svg width="526" height="90" viewBox="0 0 526 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<mask id="mask0_6_211" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="526" height="90">
+			<rect width="526" height="90" fill="#D9D9D9"/>
+			</mask>
+			<g mask="url(#mask0_6_211)">
+			<g opacity="0.1">
+			<path d="M-53.73 91.53H-65L-5.07 0H6.2L-53.73 91.53Z" fill="#B7B9BC"/>
+			<path d="M-31.12 91.53H-42.39L17.54 0H28.81L-31.12 91.53Z" fill="#B7B9BC"/>
+			<path d="M-8.51 91.53H-19.78L40.15 0H51.42L-8.51 91.53Z" fill="#B7B9BC"/>
+			<path d="M14.1 91.53H2.83L62.76 0H74.03L14.1 91.53Z" fill="#B7B9BC"/>
+			<path d="M36.71 91.53H25.45L85.38 0H96.64L36.71 91.53Z" fill="#B7B9BC"/>
+			<path d="M59.33 91.53H48.06L107.99 0H119.25L59.33 91.53Z" fill="#B7B9BC"/>
+			<path d="M81.94 91.53H70.67L130.6 0H141.87L81.94 91.53Z" fill="#B7B9BC"/>
+			<path d="M104.55 91.53H93.28L153.21 0H164.48L104.55 91.53Z" fill="#B7B9BC"/>
+			<path d="M127.16 91.53H115.89L175.82 0H187.09L127.16 91.53Z" fill="#B7B9BC"/>
+			<path d="M149.77 91.53H138.5L198.43 0H209.7L149.77 91.53Z" fill="#B7B9BC"/>
+			<path d="M172.38 91.53H161.12L221.05 0H232.31L172.38 91.53Z" fill="#B7B9BC"/>
+			<path d="M195 91.53H183.73L243.66 0H254.92L195 91.53Z" fill="#B7B9BC"/>
+			<path d="M217.61 91.53H206.34L266.27 0H277.54L217.61 91.53Z" fill="#B7B9BC"/>
+			<path d="M240.22 91.53H228.95L288.88 0H300.15L240.22 91.53Z" fill="#B7B9BC"/>
+			<path d="M262.83 91.53H251.56L311.49 0H322.76L262.83 91.53Z" fill="#B7B9BC"/>
+			<path d="M285.44 91.53H274.17L334.1 0H345.37L285.44 91.53Z" fill="#B7B9BC"/>
+			</g>
+			</g>
+			</svg>
+				</span>
+			</h1>
+			{%- if show_collection_des == true and collection.description != blank -%}
+			<div class="boost-pfs-filter-collection-description rte">
+				{{ collection.description }}
+			</div>
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% capture subcategory_area %}
+{% assign current_collection_handle = collection.handle %}
+{% assign menu_filtri = linklists['menu-fittizio'].links %}
+{% render 'off_breadcrumbs' %}	
+	<div class="freccia_mobile">→</div>
+	<div class="subcategory-area">
+	{% if current_collection_handle == 'all' %}
+		{% for livello_1 in menu_filtri %}
+		<a class="button subcategory-btn body-default" href="{{ livello_1.url }}">{{ livello_1.title }}</a>
+		{% endfor %}
+	{% else %}
+		{% for livello_1 in menu_filtri %}
+		{% if livello_1.object.handle == current_collection_handle %}
+			{% if livello_1.links %}
+			{% for livello_2 in livello_1.links %}
+				<a class="button subcategory-btn body-default" href="{{ livello_2.url }}">{{ livello_2.title }}</a>
+			{% endfor %}
+			{% endif %}
+		{% else %}
+			{% if livello_1.links %}
+			{% for livello_2 in livello_1.links %}
+				{% if livello_2.object.handle == current_collection_handle %}
+				{% if livello_2.links %}
+					{% for livello_3 in livello_2.links %}
+					<a class="button subcategory-btn body-default" href="{{ livello_3.url }}">{{ livello_3.title }}</a>
+					{% endfor %}
+				{% endif %}
+				{% endif %}
+			{% endfor %}
+			{% endif %}
+		{% endif %}
+		{% endfor %}
+	{% endif %}
+	{% if current_collection_handle != 'all'%}
+		<a class="button subcategory-btn body-default all_prod" href="/collections/tutti-i-prodotti">TUTTI I PRODOTTI</a>
+	{% endif %}
+	</div>
+{% endcapture %}
+
+{{ subcategory_area }}

@@ -1,0 +1,45 @@
+#th_pb_qty_bundle.th_pb_qty_bundle_cls .th_pb_qty_bundle_l2_grid_inner .th_pb_qty_bundle_l2_title_text h6 span {
+    color: #000000 !important;
+}
+#th_pb_qty_bundle .th_pb_qty_bundle_l2_grid_inner .th_pb_qty_bundle_l2_grid_discount_section {
+    border-radius: 0;
+    border: none !important;
+    background-color: #4BDD0E !important;
+}
+#th_pb_qty_bundle .th_pb_qty_bundle_l2_grid_inner .th_pb_qty_bundle_l2_grid_discount_val {
+    font-size: 11px;
+    line-height: 1.25;
+    padding: 3px 15px;
+    text-transform: uppercase;
+}
+#th_pb_qty_bundle .th_pb_qty_bundle_grid_inner {
+    background-color: #fff !important;
+    box-shadow: 0 0 20px #00000015 !important;
+    transition: all 300MS;
+    border:none !important;
+}
+#th_pb_qty_bundle .wc_this_is_active_at_the_moment {
+   
+}
+.product .box_decor_gray:after {
+    z-index: -1 !important;
+}
+div.th_pb_list_content,
+div.th_pb_qty_bundle_cls .th_pb_qty_innercode {
+    border: none !important;
+}
+#th_pb_qty_bundle {
+    padding: 0 20px;
+    background-color: #ebebeb;
+}
+div.th_pb_qty_bundle_l2_grid_inner .th_pb_qty_bundle_l2_variants_loop {
+    border-bottom: none !important;
+}
+div.th_pb_qty_bundle_l2_grid_inner .th_pb_qty_bundle_l2_single_variant {
+    max-width: 250px;
+    margin: auto;
+}
+
+.swym-ui-component .swym-atw-notification-container .swym-atw-notification-header-container .swym-atw-notification-header-wrapper .swym-close-btn {
+    margin-right: 7px !important;
+}

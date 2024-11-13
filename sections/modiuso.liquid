@@ -1,0 +1,92 @@
+<!-- Modi d'uso section starts -->
+{% if product.metafields.custom.descrizione_modo_uso != blank %}
+<section class="modi_uso">
+    <div class="container">
+        <h3 class="heading h3">Come usarlo al <span class="verde">MEGLIO</span></h3>
+        <div class="modi_uso-outter">
+            <div class="descrizione_box">
+                <h4><div style="color:#4bdd0e">///</div> MODALITÀ D'USO</h4>
+                {% for value in product.metafields.custom.descrizione_modo_uso.value %}
+                    <p class="descrizione">{{ value | descrizione_modo_uso }}</p>
+                {% endfor %}
+                <div class="icone">
+                    {% if product.metafields.custom.icona_prodotto_1 != blank %}
+                        <img src="{{product.metafields.custom.icona_prodotto_1  | image_url }}" alt="">
+                    {% endif %}
+                    {% if product.metafields.custom.icona_prodotto_2 != blank %}
+                        <img src="{{product.metafields.custom.icona_prodotto_2  | image_url }}" alt="">
+                    {% endif %}
+                    {% if product.metafields.custom.icona_prodotto_3 != blank %}
+                        <img src="{{product.metafields.custom.icona_prodotto_3  | image_url }}" alt="">
+                    {% endif %}
+                    {% if product.metafields.custom.icona_prodotto_4 != blank %}
+                        <img src="{{product.metafields.custom.icona_prodotto_4  | image_url }}" alt="">
+                    {% endif %}
+                    {% if product.metafields.custom.icona_prodotto_5 != blank %}
+                        <img src="{{product.metafields.custom.icona_prodotto_5  | image_url }}" alt="">
+                    {% endif %}
+                </div>
+
+                <svg width="308" height="94" viewBox="0 0 308 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_325_365" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="308" height="94">
+                        <rect width="308" height="94" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_325_365)">
+                        <g opacity="0.1">
+                            <path d="M30.27 93.53H19L78.93 2H90.2L30.27 93.53Z" fill="#B7B9BC"/>
+                            <path d="M52.88 93.53H41.61L101.54 2H112.81L52.88 93.53Z" fill="#B7B9BC"/>
+                            <path d="M75.49 93.53H64.22L124.15 2H135.42L75.49 93.53Z" fill="#B7B9BC"/>
+                            <path d="M98.1 93.53H86.83L146.76 2H158.03L98.1 93.53Z" fill="#B7B9BC"/>
+                            <path d="M120.71 93.53H109.45L169.38 2H180.64L120.71 93.53Z" fill="#B7B9BC"/>
+                            <path d="M143.33 93.53H132.06L191.99 2H203.25L143.33 93.53Z" fill="#B7B9BC"/>
+                            <path d="M165.94 93.53H154.67L214.6 2H225.87L165.94 93.53Z" fill="#B7B9BC"/>
+                            <path d="M188.55 93.53H177.28L237.21 2H248.48L188.55 93.53Z" fill="#B7B9BC"/>
+                            <path d="M211.16 93.53H199.89L259.82 2H271.09L211.16 93.53Z" fill="#B7B9BC"/>
+                            <path d="M233.77 93.53H222.5L282.43 2H293.7L233.77 93.53Z" fill="#B7B9BC"/>
+                            <path d="M256.38 93.53H245.12L305.05 2H316.31L256.38 93.53Z" fill="#B7B9BC"/>
+                            <path d="M279 93.53H267.73L327.66 2H338.92L279 93.53Z" fill="#B7B9BC"/>
+                            <path d="M301.61 93.53H290.34L350.27 2H361.54L301.61 93.53Z" fill="#B7B9BC"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            {% if product.metafields.custom.immagine_modo_uso != blank %}
+            <div class="immagine box_2">
+                <img src="{{ product.metafields.custom.immagine_modo_uso | image_url }}" alt="">
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if product.metafields.custom.video_modo_d_uso_youtube_url != blank %}
+    <section class="video_tutorial">
+        <div class="product-content__tabs">
+            <h3 class="heading h3">Video <span class="verde">tutorial</span></h3>
+            <iframe style="aspect-ratio:16/9;" width="100%" height="100%" src="https://www.youtube.com/embed/{{product.metafields.custom.video_modo_d_uso_youtube_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+{% endif %}
+
+
+<!-- Modi d'uso section ends -->
+{% schema %}
+{
+"name": "Modi d'uso", // Section name
+"settings": [
+
+],
+"presets": [
+    {
+    "name": "Modi d'uso",
+    "category": "ADVANCED LAYOUT"
+    }
+]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+{% javascript %}
+{% endjavascript %}

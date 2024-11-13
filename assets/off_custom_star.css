@@ -1,0 +1,93 @@
+/*general*/
+html {
+  scroll-behavior: smooth;
+}
+#page-sistema-refinish #cartec_refinish_hero_box .col01 a {
+    font-family: 'Sora' !important;
+}
+body#index .pulsanti_home .pulsante.san_valentino:hover h6 {
+    color: #f54a4b;
+}
+@media (max-width: 767px) {
+body#index .pulsanti_home .pulsante.san_valentino h6 {
+    font-size: 9px;
+}}
+@media (min-width: 768px) {
+  .desktop-none {
+    display:none !important;
+  }
+}
+.header__secondary-links .header__icon-wrapper[aria-controls="newsletter-popup"] {
+display: none;
+}
+.mobile-nav__item[data-level="1"] > .mobile-nav__link {
+  padding: 14px 0 !important;
+}
+.pagamento_rate_banner svg {
+  display: inline-block;
+  height: 15px;
+  margin-bottom: -3px;
+  width: auto;
+  margin-right: 7px;
+}
+
+#stamped-badge-2 {
+  background-color: #4DDD0F;
+  padding: 8px 15px;
+  line-height: 1.5;
+  border-left: 7.5px solid #fff;
+}
+@media (max-width: 767px) {
+  #stamped-badge-2 {
+    padding: 5px 15px;
+  }
+}
+#stamped-badge-2 span {
+  font-weight: 600;
+}
+#stamped-badge-2 #stamped-badge-title {
+  display: block;
+  font-size: 11px !important;
+  text-transform: uppercase;
+}
+@media (max-width: 767px) {
+  #stamped-badge-2 #stamped-badge-title {
+    display: inline;
+    margin-left: 8vw;
+  }
+}
+@media (max-width: 767px) {
+  #stamped-badge-2 #stamped-badge-total {
+    font-size: 13px !important;
+  }
+}
+.shipping-estimator {
+  display:none !important
+}
+
+/*PER IL CARRELLINO LATERALE - disclamer codice sconto*/
+
+ul.mini-cart__discount-list {
+  & > p {
+    font-size: 10px;
+  }
+}
+.bon-text-danger {
+  display:none !important
+}
+
+/*FIX BOTTONI SLIDER*/
+@media (max-width: 767px){
+  body#index .pulsanti_home .pulsante h6 {
+        font-size: 8px !important;
+  }
+}
+
+/*specifiche tecniche scheda*/
+p.lista_specifiche_tecniche {
+  margin-bottom:5px;
+  margin-top:0 !important;
+  &::before {
+    content:'‣ '
+  }
+}

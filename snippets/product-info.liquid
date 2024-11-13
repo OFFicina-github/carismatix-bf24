@@ -1,0 +1,472 @@
+{%- capture product_form_id -%}product-form-{{ section.id }}-{{ product.id }}{%- endcapture -%}
+
+<!-- sconto in euro -->
+{% if product.metafields.custom.etichetta_sconto_in_euro %}
+
+  {%- assign price_difference = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price -%}
+
+  {% comment %}{{ price_difference | money }} {% endcomment %}
+
+{% endif %}
+
+
+<div class="product__info">
+
+  <!-- PRODUCT META -->
+
+  <product-meta form-id="{{ product_form_id }}" price-class="price--large" class="product-meta">
+    {%- if section.settings.show_vendor -%}
+      <h2 class="product-meta__vendor heading heading--small">
+        {%- assign vendor_handle = product.vendor | handle -%}
+        {%- assign vendor_collection = collections[vendor_handle] -%}
+
+        {%- if vendor_collection != blank -%}
+          <a href="{{ vendor_collection.url }}">{{ product.vendor }}</a>
+        {%- else -%}
+          <a href="{{ product.vendor | url_for_vendor }}">{{ product.vendor }}</a>
+        {%- endif -%}
+      </h2>
+    {%- endif -%}
+
+    {% unless featured %}
+    <h1 class="product-meta__title heading h3">
+      {{ product.title }}
+      {% if product.metafields.custom.sottotitolo != blank %}
+        <span class="sottotitolo">{{ product.metafields.custom.sottotitolo }}</span>
+      {% endif %}
+    </h1>
+    {% else %}
+      <h2 class="product-meta__title heading h3">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </h2>
+    {% endunless %}
+
+    {%- comment -%}
+    OFF - custom
+    {%- endcomment -%}
+
+            {%- if section.settings.show_product_rating or section.settings.show_sku -%}
+  
+          {%- if section.settings.show_sku -%}
+            <span class="product-meta__sku text--subdued text--xxsmall" {% if product.selected_or_first_available_variant.sku == blank %}style="display: none"{% endif %} data-product-sku-container>
+              {%- comment -%}{{- 'product.general.sku' | t }}{%- endcomment -%} COD:
+              <span class="product-meta__sku-number" data-product-sku-number>{{ product.selected_or_first_available_variant.sku }}</span>
+            </span>
+          {%- endif -%}
+
+      {%- endif -%}
+
+    <div id="bedge_custom">
+    {% for bedge in product.metafields.custom.badge.value %}
+    <span>{{ bedge | img_tag }}</span>
+    {% endfor %}
+    </div>
+    
+    {% if product.metafields.custom.descrizione_breve != blank %}
+      <div class="descrizione-breve">{{ product.metafields.custom.descrizione_breve }}</div>
+    {% endif %}
+
+    {%- comment -%}
+    OFF - custom - END
+    {%- endcomment -%}
+
+
+
+{% if product.id == 8076895584485 or 
+  product.id == 8076991758565 or 
+  product.id == 8076991561957 or 
+  product.id == 8076932907237 or 
+  product.id == 8076932514021 or 
+  product.id == 8076921012453 or 
+  product.id == 8076963578085 or 
+  product.id == 8076933333221 or 
+  product.id == 8362624287067 or
+  product.id == 8362643685723 or
+  product.id == 8140057346277
+%}
+  
+{%- else -%}
+
+<div class="box_decor_gray"> <!-- BOX GRIGIO -->
+    
+    <div class="flex_custom">
+      
+      <div class="product-meta__price-list-container" role="region" aria-live="polite">
+        <div class="price-list" data-product-price-list>
+          {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            <span class="price price--highlight price--large">
+              <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
+  
+              {%- if settings.currency_code_enabled -%}
+                {{- product.selected_or_first_available_variant.price | money_with_currency -}}
+              {%- else -%}
+                {{- product.selected_or_first_available_variant.price | money -}}
+              {%- endif -%}
+            </span>
+  
+            <span class="price price--compare">
+              <span class="visually-hidden">{{ 'product.general.regular_price' | t }}</span>
+  
+              {%- if settings.currency_code_enabled -%}
+                <p>{{- product.selected_or_first_available_variant.compare_at_price | money_with_currency -}}</p>
+              {%- else -%}
+                <p>{{- product.selected_or_first_available_variant.compare_at_price | money -}}</p>
+              {%- endif -%}
+
+              <div class="product-meta__label-list label-list" data-product-label-list>
+
+                {%- unless product.selected_or_first_available_variant.available -%}
+                  <span class="label label--subdued">{{ 'collection.product.sold_out' | t }}</span>
+                {%- elsif product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+                  {%- if settings.discount_mode == 'percentage' -%}
+                    {%- assign savings = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round | append: '%' -%}
+                  {%- else -%}
+                    {%- capture savings -%}{{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
+                  {%- endif -%}
+                  
+                  {% if price_difference %}
+                    <span class="label label--highlight price_difference">RISPARIMIA {{ price_difference | money }}</span>
+                  {% else %}
+                    <span class="label label--highlight">{{ 'collection.product.discount_html' | t: savings: savings }}</span>
+                  {% endif %}
+
+                {%- endunless -%}
+
+              </div>
+            
+            </span>
+          {%- else -%}
+            <span class="price price--large">
+              <span class="visually-hidden">{{ 'product.general.sale_price' | t }}</span>
+              {%- if settings.currency_code_enabled -%}
+                {{- product.selected_or_first_available_variant.price | money_with_currency -}}
+              {%- else -%}
+                {{- product.selected_or_first_available_variant.price | money -}}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        
+          
+  
+          {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+            <div class="price text--subdued">
+              <div class="unit-price-measurement">
+                <span class="unit-price-measurement__price">{{ product.selected_or_first_available_variant.unit_price | money }}</span>
+                <span class="unit-price-measurement__separator">/</span>
+  
+                {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                  <span class="unit-price-measurement__reference-value">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_value }}</span>
+                {%- endif -%}
+  
+                <span class="unit-price-measurement__reference-unit">{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+  
+        {%- comment -%}
+      <div class="product-meta__label-list label-list" data-product-label-list>
+          {%- unless product.selected_or_first_available_variant.available -%}
+            <span class="label label--subdued">{{ 'collection.product.sold_out' | t }}</span>
+          {%- elsif product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            {%- if settings.discount_mode == 'percentage' -%}
+              {%- assign savings = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round | append: '%' -%}
+            {%- else -%}
+              {%- capture savings -%}{{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}{%- endcapture -%}
+            {%- endif -%}
+  
+            <span class="label label--highlight">{{ 'collection.product.discount_html' | t: savings: savings }}</span>
+          {%- endunless -%}
+        </div>  {%- endcomment -%}
+      </div>
+
+
+        {%- if section.settings.show_product_rating or section.settings.show_sku -%}
+        {%- comment -%}
+         <div class="product-meta__reference">
+          {%- if section.settings.show_product_rating -%}
+            <a href="{% if featured %}{{ product.url }}{% endif %}#product-{{ product.id }}-reviews-pocket" is="review-link" data-smooth-scroll class="product-meta__reviews-badge hidden-lap-and-up">{%- render 'product-rating', product: product -%}</a>
+            <a href="{% if featured %}{{ product.url }}{% endif %}#product-{{ product.id }}-tabs" is="review-link" data-smooth-scroll class="product-meta__reviews-badge hidden-pocket">{%- render 'product-rating', product: product -%}</a>
+          {%- endif -%}
+        </div>
+      {%- endcomment -%}
+      {%- endif -%}
+
+  {%- comment -%}
+      {%- if section.settings.show_product_rating or section.settings.show_sku -%}
+        <div class="product-meta__reference">
+          {%- if section.settings.show_product_rating -%}
+            <a href="{% if featured %}{{ product.url }}{% endif %}#product-{{ product.id }}-reviews-pocket" is="review-link" data-smooth-scroll class="product-meta__reviews-badge hidden-lap-and-up">{%- render 'product-rating', product: product -%}</a>
+            <a href="{% if featured %}{{ product.url }}{% endif %}#product-{{ product.id }}-tabs" is="review-link" data-smooth-scroll class="product-meta__reviews-badge hidden-pocket">{%- render 'product-rating', product: product -%}</a>
+          {%- endif -%}
+  
+          {%- if section.settings.show_sku -%}
+            <span class="product-meta__sku text--subdued text--xxsmall" {% if product.selected_or_first_available_variant.sku == blank %}style="display: none"{% endif %} data-product-sku-container>
+              {%- comment -%}{{- 'product.general.sku' | t }}{%- endcomment -%} COD:
+              <span class="product-meta__sku-number" data-product-sku-number>{{ product.selected_or_first_available_variant.sku }}</span>
+            </span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endcomment -%}
+      
+    </div>
+
+    {%- if section.settings.show_taxes_included -%}
+      {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+        <p class="product-meta__taxes-included text--small">
+          {%- if cart.taxes_included -%}
+            {{ 'product.general.include_taxes' | t }}
+          {%- endif -%}
+
+          {%- if shop.shipping_policy.body != blank -%}
+            {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+
+    <product-payment-terms form-id="{{ product_form_id }}">
+      {%- assign product_installment_form_id = 'product-installment-form-' | append: section.id | append: '-' | append: product.id -%}
+
+      {%- form 'product', product, id: product_installment_form_id -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {{- form | payment_terms -}}
+      {%- endform -%}
+    </product-payment-terms>
+    
+  
+      <!-- <div class="container_count">
+        <p>Ultime ore di sconti BLACK FRIDAY!</p>
+        <div id="countdown">
+          <ul>
+            <li><span id="hours"></span>Ore</li>
+            <li><span id="minutes"></span>Minuti</li>
+            <li><span id="seconds"></span>Secondi</li>
+            <li><span id="days"></span>Giorni</li>
+          </ul>
+        </div>
+      </div> -->
+
+  {%- render 'product-form', product: product, update_url: update_url -%}
+
+  {%- assign help_page = section.settings.help_page -%}
+
+  {%- if section.settings.show_share_buttons or help_page != blank -%}
+    <div class="product-meta__aside">
+      {%- if section.settings.show_share_buttons -%}
+        <div class="product-meta__share text--subdued">
+          {%- assign share_url = shop.url | append: product.url -%}
+          {%- assign twitter_text = product.title | url_param_escape -%}
+          {%- assign pinterest_description = product.description | strip_html | truncatewords: 15 | url_param_escape -%}
+          {%- assign pinterest_image = product.featured_image | img_url: '800x' | prepend: 'https:' -%}
+
+          <button is="share-toggle-button" share-url="{{ share_url | escape }}" share-title="{{ product.title | escape }}" class="product-meta__share-label link hidden-tablet-and-up" aria-controls="mobile-share-buttons-{{ section.id }}" aria-expanded="false">{{ 'product.general.share' | t }}</button>
+          <div class="product-meta__share-label hidden-phone">{{ 'product.general.share' | t }}</div>
+
+          <popover-content id="mobile-share-buttons-{{ section.id }}" class="popover hidden-tablet-and-up">
+            <span class="popover__overlay"></span>
+
+            <header class="popover__header">
+              <span class="popover__title heading h6">{{- 'article.general.share' | t -}}</span>
+
+              <button type="button" class="popover__close-button tap-area tap-area--large" data-action="close" title="{{ 'general.accessibility.close' | t | escape }}">
+                {%- render 'icon' with 'close' -%}
+              </button>
+            </header>
+
+            <div class="mobile-share-buttons">
+              <a class="mobile-share-buttons__item mobile-share-buttons__item--facebook" href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.facebook_share' | t }}">
+                {%- render 'icon' with 'facebook-share-mobile' -%} Facebook
+              </a>
+
+              <a class="mobile-share-buttons__item mobile-share-buttons__item--pinterest" href="https://pinterest.com/pin/create/button/?url={{ share_url }}{% if pinterest_image != blank %}&media={{ pinterest_image }}{% endif %}&description={{ pinterest_description }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.pinterest_pin' | t }}">
+                {%- render 'icon' with 'pinterest-share-mobile' -%} Pinterest
+              </a>
+
+              <a class="mobile-share-buttons__item mobile-share-buttons__item--twitter" href="https://twitter.com/share?{% if twitter_text != blank %}text={{twitter_text}}&{% endif %}url={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.twitter_tweet' | t }}">
+                {%- render 'icon' with 'twitter-share-mobile' -%} Twitter
+              </a>
+
+              <a class="mobile-share-buttons__item mobile-share-buttons__item--mail" href="mailto:?&subject={{ article.title | escape }}&body={{ share_url }}" aria-label="{{ 'general.social.email_share' | t }}">
+                {%- render 'icon' with 'email-share-mobile' -%} {{ 'general.social.email_label' | t }}
+              </a>
+            </div>
+          </popover-content>
+
+          <div class="product-meta__share-button-list hidden-phone">
+            <a class="product-meta__share-button-item product-meta__share-button-item--facebook link tap-area" href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.facebook_share' | t }}">
+              {%- render 'icon' with 'facebook', width: 8, height: 14 -%}
+            </a>
+
+            <a class="product-meta__share-button-item product-meta__share-button-item--pinterest link tap-area" href="https://pinterest.com/pin/create/button/?url={{ share_url }}{% if pinterest_image != blank %}&media={{ pinterest_image }}{% endif %}&description={{ pinterest_description }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.pinterest_pin' | t }}">
+              {%- render 'icon' with 'pinterest', width: 10, height: 14 -%}
+            </a>
+
+            <a class="product-meta__share-button-item product-meta__share-button-item--twitter link tap-area" href="https://twitter.com/share?{% if twitter_text != blank %}text={{ twitter_text }}&{% endif %}url={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.twitter_tweet' | t }}">
+              {%- render 'icon' with 'twitter', width: 17, height: 14 -%}
+            </a>
+
+            <a class="product-meta__share-button-item product-meta__share-button-item--mail link tap-area" href="mailto:?&subject={{ product.title | escape }}&body={{ share_url }}" aria-label="{{ 'general.social.email_share' | t }}">
+              {%- render 'icon' with 'share', width: 13, height: 13 -%}
+            </a>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if help_page != blank -%}
+        <button is="toggle-button" class="product-meta__help link text--subdued hidden-tablet-and-up" aria-controls="product-{{ section.id }}-help-popover" aria-expanded="false">{{ 'product.general.need_help' | t }}</button>
+        <button is="toggle-button" class="product-meta__help link text--subdued hidden-phone" aria-controls="product-{{ section.id }}-help-drawer" aria-expanded="false">{{ 'product.general.need_help' | t }}</button>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if help_page != blank -%}
+    {%- comment -%}Drawer for tablet and higher{%- endcomment -%}
+    <drawer-content id="product-{{ section.id }}-help-drawer" class="drawer drawer--large hidden-phone">
+      <span class="drawer__overlay"></span>
+
+      <header class="drawer__header">
+        <p class="drawer__title heading h6">{{ help_page.title }}</p>
+
+        <button type="button" class="drawer__close-button tap-area" data-action="close" title="{{ 'general.accessibility.close' | t | escape }}">
+          {%- render 'icon' with 'close' -%}
+        </button>
+      </header>
+
+      <div class="drawer__content drawer__content--padded-start">
+        <div class="rte">
+          {{- help_page.content -}}
+        </div>
+      </div>
+    </drawer-content>
+
+    {%- comment -%}Popover for mobile{%- endcomment -%}
+    <popover-content hidden id="product-{{ section.id }}-help-popover" class="popover hidden-lap-and-up">
+      <span class="popover__overlay"></span>
+
+      <header class="popover__header">
+        <p class="popover__title heading h6">{{ help_page.title }}</p>
+
+        <button type="button" class="popover__close-button tap-area tap-area--large" data-action="close" title="{{ 'general.accessibility.close' | t | escape }}">
+          {%- render 'icon' with 'close' -%}
+        </button>
+      </header>
+
+      <div class="popover__content">
+        <div class="rte">
+          {{- help_page.content -}}
+        </div>
+      </div>
+    </popover-content>
+  {%- endif -%}
+
+<a target="_blank" href="https://carismatix.it/pages/faq/#category-template--16611715973349__faq-e49a9c5b-f3ce-4081-b261-f33d5af2ea0b" class="pagamento_rate_banner">
+  <svg width="100%" height="100%" viewBox="0 0 202 209" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:2;">
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M249.318,92.005L248.521,92.803C247.641,93.684 247.381,94.852 247.942,95.412L248.956,96.425C249.516,96.985 250.684,96.725 251.564,95.843L252.361,95.046C253.047,94.359 253.388,93.459 253.191,92.828L252.403,90.305C252.205,89.674 252.456,88.864 253.303,88.017C254.15,87.169 255.351,86.875 255.911,87.435L256.926,88.449C257.486,89.008 257.226,90.176 256.346,91.058L255.549,91.855" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M256.419,87.942L258.81,85.549" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M248.449,95.918L246.058,98.311" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M258.013,97.505C253.171,102.35 246.748,103.783 243.667,100.704C240.586,97.625 242.013,91.201 246.855,86.355C251.697,81.509 258.118,80.077 261.2,83.156C264.282,86.235 262.854,92.659 258.013,97.505Z" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M243.667,100.704L246.855,103.89C249.936,106.968 256.359,105.536 261.2,100.69C266.042,95.845 267.47,89.421 264.388,86.342L261.2,83.156" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M278.324,104.674L277.805,103.819C277.232,102.875 276.28,102.405 275.679,102.77L274.591,103.43C273.99,103.795 273.968,104.856 274.541,105.8L275.06,106.655C275.507,107.391 276.211,107.875 276.796,107.838L279.137,107.69C279.723,107.653 280.367,108.04 280.919,108.948C281.47,109.856 281.47,110.953 280.869,111.318L279.781,111.978C279.18,112.343 278.228,111.873 277.655,110.929L277.136,110.074" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M280.325,111.648L281.882,114.213" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M275.135,103.1L273.578,100.536" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M271.747,111.007C268.594,105.814 268.717,99.978 272.022,97.972C275.326,95.966 280.561,98.549 283.714,103.741C286.866,108.934 286.743,114.771 283.439,116.777C280.134,118.783 274.899,116.2 271.747,111.007Z" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M272.022,97.972L268.602,100.047C265.298,102.054 265.175,107.89 268.327,113.083C271.48,118.276 276.715,120.859 280.02,118.853L283.439,116.777" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M251.88,115.548L251.014,115.857C250.057,116.199 249.458,116.97 249.676,117.578L250.07,118.681C250.287,119.289 251.239,119.506 252.195,119.164L253.062,118.854C253.807,118.588 254.373,118.043 254.448,117.509L254.747,115.373C254.822,114.839 255.29,114.329 256.209,114C257.13,113.671 258.118,113.875 258.336,114.484L258.73,115.586C258.946,116.195 258.347,116.965 257.392,117.307L256.526,117.616" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M258.532,115.035L261.131,114.106" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M249.873,118.129L247.274,119.058" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M256.368,122.644C251.108,124.524 245.873,123.334 244.676,119.986C243.48,116.638 246.775,112.4 252.036,110.52C257.297,108.64 262.533,109.83 263.729,113.178C264.926,116.526 261.631,120.764 256.368,122.644Z" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+    <g transform="matrix(4.16667,0,0,4.16667,-999.188,-330.405)">
+        <path d="M244.676,119.986L245.914,123.45C247.111,126.798 252.346,127.988 257.607,126.108C262.869,124.228 266.164,119.99 264.967,116.642L263.729,113.178" style="fill:none;stroke:rgb(2,34,34);stroke-width:2px;"/>
+    </g>
+</svg>Paga in 3 comode rate con PayPal</a>
+
+<a target="_blank" href="https://carismatix.it/pages/faq" class="pagamento_rate_banner fattura">
+    <svg width="100%" height="100%" viewBox="0 0 1591 1411" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+        <path d="M1319.08,2152.22L1332.94,2202.17L1327.41,2211.92L1108,2240.8L1034.5,1975.76L1040.03,1966.02L1069.98,1962.16" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+    </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1226.6,1941.52L1259.43,1937.13L1284.16,2026.29" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1115.88,2039.73L1217.14,2026.4" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1126.77,2073.53L1177.4,2066.87" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1141.13,2180.87C1141.13,2180.87 1162.04,2157.44 1165.8,2167.9C1169.55,2178.36 1170.49,2180.98 1176.1,2180.24C1181.72,2179.5 1194.82,2166.82 1194.82,2166.82" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1272.46,2136.43L1226.59,2153.82L1244.26,2108.06L1368.54,1980.63C1373.24,1975.96 1380.83,1975.98 1385.51,1980.68L1396.78,1992.03C1401.46,1996.73 1401.43,2004.33 1396.73,2009L1272.46,2136.43Z" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1349.93,1999.71L1378.13,2028.08" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+        <g transform="matrix(4.16667,0,0,4.16667,-4277.08,-7959.26)">
+            <path d="M1166,1936.06C1162.26,1924.83 1149.81,1916.92 1138.2,1918.4C1126.59,1919.88 1120.21,1930.18 1123.95,1941.41L1102.93,1944.08C1095.19,1945.07 1090.94,1951.94 1093.43,1959.43L1100.2,1979.76L1212.32,1965.5L1205.55,1945.16C1203.06,1937.68 1194.76,1932.4 1187.02,1933.39L1166,1936.06Z" style="fill:none;stroke:rgb(10,19,32);stroke-width:16px;"/>
+        </g>
+</svg>Ti serve fattura? Richiedila dopo l'acquisto!
+</a>
+
+
+<div class="th_pb_section" id="th_product_bundle" data-id="{{ product.id }}"></div>
+<!---NATALE 
+<div style="display:flex;margin-top:10px;padding-top: 6px;"><img style="width: 42px;margin-right:10px;height:auto;margin-top: -16px;" src="https://cdn.shopify.com/s/files/1/0602/0975/8437/files/slitta_carismatix-01.svg?v=1670861374"/> <span style="font-size: 12px;line-height: 16px;"><span style="color: #4cdd0f">Oh oh ooooh!</span> Se effettui l'ordine prima del 21 dicembre ore 14.00, <span style="text-decoration:underline">verrà consegnato in tempo per Natale</span> <i>(salvo isole e zone disagiate)</i>.</span>
+</div>---->
+<!---SAN VALENTINO
+<div id="avviso-spedizione" style="display:none;margin-top:10px;padding-top: 6px;"><img style="width: 42px;margin-right:10px;height:auto;margin-top: -16px;" src="https://cdn.shopify.com/s/files/1/0602/0975/8437/files/cuore-thumbnail.svg?v=1675336781"/> <span style="font-size: 12px;line-height: 16px;"><span style="color: #F54A4B"><b>All you need is <span style="text-decoration: line-through;">love</span> a clean car!</b></span> Se effettui l'ordine prima del 10 febbraio ore 16.00, <span style="text-decoration:underline">verrà consegnato in tempo per San Valentino</span> <i>(salvo isole e zone disagiate)</i>.</span></div>
+---->
+<div class="product-icons_custom">
+    <div class="item">
+        <img src="https://cdn.shopify.com/s/files/1/0660/5252/2209/files/48h_shipping.png?v=1663757064" alt="">
+        <p>Consegna entro 48h, se acquisti entro le 16:00 spediamo in giornata</p>
+    </div>
+    <div class="item">
+        <img src="https://cdn.shopify.com/s/files/1/0660/5252/2209/files/free_shipping.png?v=1663757064" alt="">
+        <p>Spedizione gratuita da 29,00€</p>
+     <!---<p>Spedizione gratuita da <span style="text-decoration: line-through;">69€</span> <b>49€</b> (fino al 30 Settembre)</p>--->
+    </div>
+    <div class="item">
+        <img src="https://cdn.shopify.com/s/files/1/0660/5252/2209/files/secure_payment.png?v=1663757064" alt="">
+        <p>Pagamento sicuro al 100%</p>
+    </div>
+</div>
+
+
+</div> <!-- FINE - BOX GRIGIO -->
+
+{% endif %}
+      </product-meta>
+
+</div>

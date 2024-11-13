@@ -1,0 +1,27 @@
+<nav id="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+        {%- assign product_collection_handles = product.collections | map: 'handle' -%}
+        {%- for link in linklists.menu-fittizio.links -%}
+            {%- if product_collection_handles contains link.object.handle -%}
+                <li><a href='{{ link.object.url }}'> {{ link.object.title }}</a></li>
+
+                {%- for link2 in link.links -%}
+                    {%- if product_collection_handles contains link2.object.handle -%}
+                        <li class="separatore">/</li>
+                        <li><a href='{{ link2.object.url }}'>{{ link2.object.title }}</a></li>
+
+                        {%- for link3 in link2.links -%}
+                            {%- if product_collection_handles contains link3.object.handle -%}
+                                <li class="separatore">/</li>
+                                <li><a href='{{ link3.object.url }}'>{{ link3.object.title }}</a></li>
+                                {% break %}
+                            {%- endif -%}
+                        {%- endfor -%}
+                        {% break %}
+                    {%- endif -%}
+                {%- endfor -%}
+                {% break %}
+            {%- endif -%}
+        {%- endfor -%}
+    </ol>
+</nav>

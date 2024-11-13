@@ -69,10 +69,15 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
     <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
     <link rel="preload" as="script" href="{{ 'vendor.js' | asset_url }}">
     <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
-    <link rel="preload" as="script" href="{{ 'custom_bf.js' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'off_custom.js' | asset_url }}">
+    {%- if template contains 'custom' -%}
+      <link rel="preload" as="script" href="{{ 'off_custom_brands.js' | asset_url }}">
+    {%- endif -%}
+    <!-- <link rel="preload" as="script" href="{{ # 'custom_bf.js' | asset_url }}"> -->
     <link rel="preload" as="style" href="{{ 'off_custom.css' | asset_url }}">
     <link rel="preload" as="style" href="{{ 'off_custom_star.css' | asset_url }}">
-    <link rel="preload" as="style" href="{{ 'off_blackfriday.css' | asset_url }}">
+    <link rel="preload" as="style" href="{{ 'marco_style.css' | asset_url }}">
+    <!--  <link rel="preload" as="style" href="{{ # 'off_blackfriday.css' | asset_url }}"> -->
 
     
     {%- comment -%}
@@ -102,12 +107,18 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'off_custom.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'off_custom_star.css' | asset_url }}">
-    <link rel="stylesheet" href="{{ 'off_blackfriday.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'marco_style.css' | asset_url }}">
+    <!-- <link rel="stylesheet" href="{{ # 'off_blackfriday.css' | asset_url }}"> -->
 
     <script src="{{ 'vendor.js' | asset_url }}" defer></script>
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
     <script src="{{ 'custom.js' | asset_url }}" defer></script>
-    <script src="{{ 'custom_bf.js' | asset_url }}" defer></script>
+    <script src="{{ 'off_custom.js' | asset_url }}" defer></script>
+    {%- if template contains 'custom' -%}
+      <script src="{{ 'off_custom_brands.js' | asset_url }}" defer></script>
+    {%- endif -%}
+    
+    <!-- <script src="{{ # 'custom_bf.js' | asset_url }}" defer></script> -->
 
     {{ content_for_header }}
 {% render "cookie-consent" %}
@@ -143,7 +154,7 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
   {% endif %}
 {% endfor %}
 
-  <body id="{{ template | handleize }}" class="no-focus-outline {{ feature_classes }} {{ san_valentino_bodyclass }}
+  <body id="{{ template | handleize }}" class="no-focus-outline handle_{{ request.path | split: '/' | last }} {{ feature_classes }} {{ san_valentino_bodyclass }}
   {% if product.id %}product-id-{{ product.id }}{% endif %}" data-instant-allow-query-string>
     {%- comment -%}Common SVG definitions that we are re-using in several places{%- endcomment -%}
     <svg class="visually-hidden">
@@ -216,6 +227,14 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
       {%- endunless -%}
     </div>
 
+{% if collection and template == 'collection' %}
+  {% if collection.metafields.custom.descrizione_seo %}
+    <section id="descrizione_seo" class="container">
+      {{ collection.metafields.custom.descrizione_seo | metafield_tag }}
+    </section>
+  {% endif %}
+{% endif %}
+
     {%- if request.page_type != 'gift_card' and request.page_type != 'password' -%}
       {%- section 'footer' -%}
     {%- endif -%}
@@ -268,44 +287,165 @@ document.querySelector(".stamped-form-review-recommend-label").textContent='Racc
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
-  <!-- BLACK FRDAY 2023 -->
+            <!-- BLACK FRDAY 2023 
+
+<style>
+    canvas#c {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: 8;
+        top: 0;
+        left: 0;
+        pointer-events:none!important;
+        animation: animazioneCanvas 20s infinite;
+    }
+@keyframes animazioneCanvas {
+    0%, 1.1% { /* 300ms su 7 minuti totali */
+        mix-blend-mode: color-dodge;
+    }
+    1.11%, 3.2% { /* 200ms su 7 minuti */
+        mix-blend-mode: darken;
+    }
+    3.21%, 7.3% { /* 180s su 7 minuti */
+        mix-blend-mode: difference;
+    }
+    7.31%, 10.4% { /* 100ms su 7 minuti */
+        mix-blend-mode: hard-light;
+    }
+    10.41%, 50% { /* 300ms su 7 minuti */
+        visibility:hidden;
+    }
+    25.01%, 26.1% { /* 300ms su 7 minuti totali */
+        mix-blend-mode: darken;
+    }
+    26.11%, 28.2% { /* 200ms su 7 minuti */
+        mix-blend-mode: color-dodge;
+    }
+    28.21%, 32.3% { /* 180s su 7 minuti */
+        mix-blend-mode: hard-light;
+    }
+    32.31%, 33.4% { /* 100ms su 7 minuti */
+        mix-blend-mode: difference;
+    }
+    33.41%, 50% { /* 300ms su 7 minuti */
+        visibility:hidden;
+    }
+    50.01%, 51.1% { /* 300ms su 7 minuti totali */
+        mix-blend-mode: color-dodge;
+    }
+    52.11%, 54.2% { /* 200ms su 7 minuti */
+        mix-blend-mode: darken;
+    }
+    54.21%, 57.3% { /* 180s su 7 minuti */
+        mix-blend-mode: difference;
+    }
+    57.31%, 58.4% { /* 100ms su 7 minuti */
+        mix-blend-mode: hard-light;
+    }
+    58.41%, 75% { /* 300ms su 7 minuti */
+        visibility:hidden;
+    }
+    75.01%, 76.1% { /* 300ms su 7 minuti totali */
+        mix-blend-mode: darken;
+    }
+    76.11%, 78.2% { /* 200ms su 7 minuti */
+        mix-blend-mode: color-dodge;
+    }
+    78.21%, 82.3% { /* 180s su 7 minuti */
+        mix-blend-mode: hard-light;
+    }
+    82.31%, 83.4% { /* 100ms su 7 minuti */
+        mix-blend-mode: difference;
+    }
+    83.41%, 100% { /* 300ms su 7 minuti */
+        visibility:hidden;
+    }
+}
+</style>
+<canvas id="c"></canvas>
+<script>
+    // geting canvas by Boujjou Achraf
+    var c = document.getElementById("c");
+    var ctx = c.getContext("2d");
+
+    //making the canvas full screen
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+
+    //chinese characters - taken from the unicode charset
+    var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+    //converting the string into an array of single characters
+    matrix = matrix.split("");
+
+    var font_size = 10;
+    var columns = c.width/font_size; //number of columns for the rain
+    //an array of drops - one per column
+    var drops = [];
+    //x below is the x coordinate
+    //1 = y co-ordinate of the drop(same for every drop initially)
+    for(var x = 0; x < columns; x++)
+        drops[x] = 1; 
+
+    //drawing the characters
+    function draw()
+    {
+        //Black BG for the canvas
+        //translucent BG to show trail
+        ctx.fillStyle = "rgba(255, 255, 255, 0.04)";
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        ctx.fillStyle = "#4bdd0e";//green text
+        ctx.font = font_size + "px arial";
+        //looping over drops
+        for(var i = 0; i < drops.length; i++)
+        {
+            //a random chinese character to print
+            var text = matrix[Math.floor(Math.random()*matrix.length)];
+            //x = i*font_size, y = value of drops[i]*font_size
+            ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+            //sending the drop back to the top randomly after it has crossed the screen
+            //adding a randomness to the reset to make the drops scattered on the Y axis
+            if(drops[i]*font_size > c.height && Math.random() > 0.975)
+                drops[i] = 0;
+
+            //incrementing Y coordinate
+            drops[i]++;
+        }
+    }
+    setInterval(draw, 35);
+</script>
   
+-->
 
 
-
-<div id="counter_box">
-    <p>Qualcosa sta per accadere</p>
-    <div id="counter"></div>
-    <p>rimani connesso [...]</p>
-</div>
-
-<!-- <div id="popup_box_bf">
-  <div id="counter_box_popup">
-      <p>Qualcosa sta per accadere</p>
-      <div id="counter2"><div>
-          <h2>7</h2>
-          <h4>gg</h4>
-          </div>
-          <div class="linea"></div>
-          <div>
-            <h2>12</h2>
-            <h4>hh</h4>
-          </div>
-          <div class="linea"></div>
-          <div>
-            <h2>46</h2>
-            <h4>mm</h4>
-          </div>
-          <div class="linea"></div>
-          <div>
-            <h2>36</h2>
-            <h4>ss</h4>
-          </div> </div>
-      <p>rimani connesso [...]</p>
-      <a>Chiudi questa finestra</a>
-  </div>
-</div> -->
+    <!-- <div id="counter_box">
+        <p>Qualcosa sta per accadere</p>
+        <div id="counter"></div>
+        <p>rimani connesso [...]</p>
+    </div> -->
 
           
-</body>
+<!--BeginCFFPersistentCartCart-->
+{% if customer %}
+<script>
+
+    window.cffCustomer = {
+        name: '{{customer.name}}',
+        email: '{{customer.email}}',
+        hasAccount: '{{customer.has_account}}',
+        id: '{{customer.id}}'
+    };
+
+
+</script>
+
+{% endif %}
+
+<script>
+    window.cffPCLiquidPlaced = true
+</script>
+
+<!--EndCFFPersistentCartCart--></body>
 </html>
