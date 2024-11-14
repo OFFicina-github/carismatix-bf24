@@ -22,7 +22,7 @@
    
 }
 .product .box_decor_gray:after {
-    z-index: -1 !important;
+    /*z-index: -1 !important;*/
 }
 div.th_pb_list_content,
 div.th_pb_qty_bundle_cls .th_pb_qty_innercode {
