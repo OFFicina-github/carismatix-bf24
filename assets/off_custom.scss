@@ -3669,7 +3669,9 @@ body#index .pulsanti_home.bf2024 {
   position: relative;
   z-index: 2;
   gap: 20px;
+  margin-top: -10vh;
   @media(max-width:999px) {
+    margin-top: 40px;
     flex-wrap: wrap;
   }
   a.pulsante {
@@ -3701,11 +3703,11 @@ body#index .pulsanti_home.bf2024 {
   position: relative;
   z-index:1;
   padding-left: 5vw;
-  padding-top: 80px;
+  padding-top: 0;
   padding-bottom: 80px;
   @media(max-width:999px) {
     padding-right: 5vw;
-    padding-top: 60px;
+    padding-top: 0;
     padding-bottom: 0;
   }
   .box_inner {
