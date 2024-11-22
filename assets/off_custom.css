@@ -3333,7 +3333,7 @@ h2.swym-wishlist-main-title:first-of-type {
 }
 @media (max-width: 999px) {
   #hero_bf2024 {
-    padding-bottom: 230px;
+    padding-bottom: 260px;
     background-color: #000;
   }
 }
@@ -3350,9 +3350,9 @@ h2.swym-wishlist-main-title:first-of-type {
 }
 @media (max-width: 999px) {
   #hero_bf2024 img {
-    width: 180%;
-    max-width: 180%;
-    left: -80%;
+    width: 130%;
+    max-width: 130%;
+    left: -30%;
     height: auto;
   }
 }
@@ -3366,7 +3366,7 @@ h2.swym-wishlist-main-title:first-of-type {
 }
 @media (max-width: 999px) {
   #hero_bf2024 .hero_content {
-    bottom: 0;
+    bottom: 130px;
     width: 80vw;
   }
 }

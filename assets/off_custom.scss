@@ -3582,7 +3582,7 @@ h2.swym-wishlist-main-title:first-of-type {
 #hero_bf2024 {
   position: relative;
   @media(max-width:999px) {
-    padding-bottom: 230px;
+    padding-bottom: 260px;
     background-color: #000;
   }
   img {
@@ -3594,9 +3594,9 @@ h2.swym-wishlist-main-title:first-of-type {
     object-fit: cover;
     object-position: center;
     @media(max-width:999px) {
-      width: 180%;
-      max-width: 180%;
-      left: -80%;
+      width: 130%;
+      max-width: 130%;
+      left: -30%;
       height: auto;
     }
   }
@@ -3608,7 +3608,7 @@ h2.swym-wishlist-main-title:first-of-type {
     left:10vw;
     color: #fff;
     @media(max-width:999px) {
-      bottom: 0;
+      bottom: 130px;
       width: 80vw;
     }
     p {
