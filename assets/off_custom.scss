@@ -491,7 +491,7 @@ body {
 
 .product-item-meta__vendor,
 span.price--highlight {
-  color: #4BDD0E;
+  color: #4BDD0E !important;
 }
 
 #brand_cta {
@@ -2937,7 +2937,7 @@ product-item.product-item .product-item__quick-form {
 
 @media (min-width: 1200px) and (max-width: 1380px) {
   .product-form .shopify-block.shopify-app-block:first-of-type {
-    right: -20% !important;
+    right: 30px !important;
     z-index: 999 !important;
   }
 
@@ -3848,6 +3848,13 @@ body#index .pulsanti_home.bf2024 {
       color: #46cf0f;
     }
   }
+  section.modi_uso .modi_uso-outter .descrizione_box {
+    background-color: #282828;
+    color: #fff;
+    * {
+      color: #fff;
+    }
+  }
 }
 .price-list {
   @media(max-width:999px) {
@@ -3876,7 +3883,7 @@ product-sticky-form.product-sticky-form {
   background-color:#000;
   .boost-pfs-filter-collection-description {
     p:last-child {
-      display: none;
+      //display: none;
     }
   }
   .boost-pfs-filter-collection-header-wrapper {
@@ -3916,9 +3923,6 @@ product-sticky-form.product-sticky-form {
   .boost-pfs-filter-product-item .boost-pfs-filter-product-item-image-link {
     box-shadow:$shadow;
   }
-  .boost-pfs-filter-product-item-image {
-    box-shadow:$shadow_small;
-  }
   .boost-pfs-filter-refine-by {
     color:#000 !important;
     * {
@@ -3932,5 +3936,56 @@ body#index #scroll_to_nl_natale {
 .breadcrumbs_container {
   a, span {
     color: #fff;
+  }
+}
+.boost-pfs-filter-product-item-image {
+  box-shadow:$shadow_small;
+}
+.product-item__aspect-ratio img.product-item__primary-image {
+  box-shadow: inset $shadow_small;
+}
+#shopify-section-mini-cart {
+  cart-drawer {
+    background-color: #000;
+    color: #fff;
+    * {
+      color: #fff !important;
+    }
+    .product-item-meta__vendor,
+    span.price--highlight {
+      color: #4BDD0E !important;
+    }
+  }
+  cart-drawer-recommendations .mini-cart__recommendations-inner {
+    background-color: #282828;
+    color: #fff;
+  }
+  header.drawer__header {
+    background-color: #000;
+    color: #fff;
+  }
+}
+[aria-controls="mini-cart-note"] {
+  text-decoration: underline;
+}
+.mini-cart__actions.text--subdued.text--xsmall {
+  margin-bottom: 10px;
+}
+.pagamento_rate_banner.fattura.carrello_laterale {
+  cursor:pointer;
+}
+footer.mini-cart__drawer-footer.drawer__footer.drawer__footer--tight.drawer__footer--bordered {
+  &::before {
+    content: none;
+  }
+}
+#cart {
+  background-color: #000;
+  color:#fff;
+  * {
+    color:#fff;
+  }
+  .cart__recap {
+    background-color: #282828;
   }
 }
