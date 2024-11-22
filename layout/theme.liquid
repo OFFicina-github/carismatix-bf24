@@ -154,7 +154,7 @@ NOTE TO DEVELOPERS: welcome to Focal theme! We hope that you will enjoy editing 
   {% endif %}
 {% endfor %}
 
-  <body id="{{ template | handleize }}" class="no-focus-outline handle_{{ request.path | split: '/' | last }} {{ feature_classes }} {{ san_valentino_bodyclass }}
+  <body id="{{ template | handleize }}" class="{% if settings.theme_id == 176314057051 %}tema_black_friday_2024{% endif %} no-focus-outline handle_{{ request.path | split: '/' | last }} {{ feature_classes }} {{ san_valentino_bodyclass }}
   {% if product.id %}product-id-{{ product.id }}{% endif %}" data-instant-allow-query-string>
     {%- comment -%}Common SVG definitions that we are re-using in several places{%- endcomment -%}
     <svg class="visually-hidden">
