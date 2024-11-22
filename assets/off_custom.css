@@ -3345,14 +3345,15 @@ h2.swym-wishlist-main-title:first-of-type {
   height: calc(100vh - 195px);
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: bottom;
-     object-position: bottom;
+  -o-object-position: center;
+     object-position: center;
 }
 @media (max-width: 999px) {
   #hero_bf2024 img {
     width: 180%;
     max-width: 180%;
     left: -80%;
+    height: auto;
   }
 }
 #hero_bf2024 .hero_content {

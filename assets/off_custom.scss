@@ -3592,11 +3592,12 @@ h2.swym-wishlist-main-title:first-of-type {
     width: 100vw;
     height: calc(100vh - 195px);
     object-fit: cover;
-    object-position: bottom;
+    object-position: center;
     @media(max-width:999px) {
       width: 180%;
       max-width: 180%;
       left: -80%;
+      height: auto;
     }
   }
   .hero_content {
