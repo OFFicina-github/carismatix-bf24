@@ -2578,7 +2578,7 @@ body.san_valention_collection_prod h1.product-meta__title::before {
   font-size: 12px;
   color: #4BDD0E;
   line-height: 1;
-  background-color: #000000;
+  background-color: #0A1320;
   transition: all 300ms;
 }
 
@@ -2759,7 +2759,7 @@ product-item.product-item .product-item__quick-form {
   }
 
   #page-sistema-refinish #main>div:nth-child(1) .section__color-wrapper {
-    background-color: #000000 !important;
+    background-color: #0A1320 !important;
   }
 
   #countdown ul li {
@@ -2814,7 +2814,7 @@ product-item.product-item .product-item__quick-form {
     font-size: 12px;
     color: #4BDD0E;
     line-height: 1;
-    background-color: #000000;
+    background-color: #0A1320;
     transition: all 300ms;
   }
 
@@ -3084,7 +3084,7 @@ input#ptw-gift-needed {
     img {
       height: 120px;
       margin: 0 0 0 auto;
-      filter: drop-shadow(0px 0px 20px #00000030);
+      filter: drop-shadow(0px 0px 20px #0A132030);
       transform: scale(1.25);
     }
 
@@ -3118,7 +3118,7 @@ input#ptw-gift-needed {
     .aca-product {
       padding: 10px;
       background-color: #f9f9f9;
-      box-shadow: 1px 1px 20px #00000021;
+      box-shadow: 1px 1px 20px #0A132021;
       margin: 5px;
       width: 32%;
 
@@ -3438,7 +3438,7 @@ body#index #scroll_to_nl_natale {
         display: inline;
 
         &:hover {
-          color: #000000;
+          color: #0A1320;
         }
       }
     }
@@ -3646,6 +3646,8 @@ $shadow_small : 0 0 20px rgba(76, 221, 14, 0.75);
       background-color: #000;
       color: #fff;
       box-shadow:$shadow;
+      margin-left: auto !important;
+      margin-right: auto !important;
       input {
         background-color: transparent;
         box-shadow:$shadow_small;
@@ -3669,7 +3671,7 @@ body#index .pulsanti_home.bf2024 {
   position: relative;
   z-index: 2;
   gap: 20px;
-  margin-top: -10vh;
+  margin-top: 20px;
   @media(max-width:999px) {
     margin-top: 40px;
     flex-wrap: wrap;
@@ -3695,6 +3697,9 @@ body#index .pulsanti_home.bf2024 {
     }
     h6 {
       font-size: 18px !important;
+    }
+    &:hover {
+      opacity: 0 !important;
     }
   }
 }
@@ -3787,13 +3792,13 @@ body#index .pulsanti_home.bf2024 {
       color: #000;
     }
     .price:not(.price--compare) {
-      background-image: url(https://cdn.shopify.com/s/files/1/0602/0975/8437/files/dettaglio_prodotto.png?v=1731513048);
+      background-image: url(https://cdn.shopify.com/s/files/1/0602/0975/8437/files/dettaglio_prodotto_verde.png?v=1732272245);
     }
   }
   .box_decor_gray {
-    background-color: #282828;
+    background-color: #1C232F;
     &::after {
-      background-color: #282828;
+      background-color: #1C232F;
     }
   }
   .product-icons_custom {
@@ -3849,7 +3854,7 @@ body#index .pulsanti_home.bf2024 {
     }
   }
   section.modi_uso .modi_uso-outter .descrizione_box {
-    background-color: #282828;
+    background-color: #1C232F;
     color: #fff;
     * {
       color: #fff;
@@ -3866,8 +3871,8 @@ button[is="toggle-button"] {
 }
 
 product-sticky-form.product-sticky-form {
-  background-color: #282828;
-  border-color: #282828;
+  background-color: #1C232F;
+  border-color: #1C232F;
   color: #fff;
   box-shadow: $shadow_small;
   img {
@@ -3887,7 +3892,7 @@ product-sticky-form.product-sticky-form {
     }
   }
   .boost-pfs-filter-collection-header-wrapper {
-    background-color: #282828;
+    background-color: #1C232F;
     &::after {
       content: none;
     }
@@ -3957,7 +3962,7 @@ body#index #scroll_to_nl_natale {
     }
   }
   cart-drawer-recommendations .mini-cart__recommendations-inner {
-    background-color: #282828;
+    background-color: #1C232F;
     color: #fff;
   }
   header.drawer__header {
@@ -3986,6 +3991,6 @@ footer.mini-cart__drawer-footer.drawer__footer.drawer__footer--tight.drawer__foo
     color:#fff;
   }
   .cart__recap {
-    background-color: #282828;
+    background-color: #1C232F;
   }
 }
