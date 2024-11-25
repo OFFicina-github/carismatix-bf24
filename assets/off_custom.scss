@@ -3661,6 +3661,9 @@ h2.swym-wishlist-main-title:first-of-type {
 div.shopify-section--main-blog {
   background-color: #0A1320;
   padding-bottom: 40px;
+  .link-bar__title.heading.heading--small.text--subdued {
+    display: none !important;
+  }
   *, a, span, li, h1, p {
     color: #fff !important;
   }
