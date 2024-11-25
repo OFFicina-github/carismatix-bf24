@@ -3423,6 +3423,13 @@ h2.swym-wishlist-main-title:first-of-type {
   }
 }
 
+div.shopify-section--main-blog {
+  background-color: #0A1320;
+}
+div.shopify-section--main-blog * {
+  color: #fff !important;
+}
+
 .bf2024_section image-with-text-block.image-with-text-block--small {
   flex-direction: column;
 }
@@ -3565,7 +3572,7 @@ body#index .pulsanti_home.bf2024 a.pulsante:hover {
 }
 
 #product-custom {
-  background-color: #000;
+  background-color: #0A1320;
 }
 #product-custom #AddToCart {
   box-shadow: 0 0 50px rgba(76, 221, 14, 0.75);
