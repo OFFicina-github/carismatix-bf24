@@ -3282,6 +3282,10 @@ body#index #scroll_to_nl_natale:hover img {
   padding: 0;
 }
 
+.box_decor_gray {
+  overflow: hidden;
+}
+
 .box_decor_gray .flex_custom .product-meta__price-list-container .price-list .price--highlight .transcy-money {
   color: #fff !important;
 }
