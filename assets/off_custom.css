@@ -3265,7 +3265,7 @@ body#index #scroll_to_nl_natale:hover img {
 .thpb_combo_p_grid_detail {
   margin-left: 0 !important;
 }
-.thpb_combo_p_grid_detail h6, .thpb_combo_p_grid_detail span {
+.thpb_combo_p_grid_detail h6 a, .thpb_combo_p_grid_detail span {
   color: #fff !important;
 }
 
