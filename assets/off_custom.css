@@ -3433,6 +3433,10 @@ div.shopify-section--main-blog .link-bar__title.heading.heading--small.text--sub
 div.shopify-section--main-blog *, div.shopify-section--main-blog a, div.shopify-section--main-blog span, div.shopify-section--main-blog li, div.shopify-section--main-blog h1, div.shopify-section--main-blog p {
   color: #fff !important;
 }
+div.shopify-section--main-blog > section > .container {
+  position: relative;
+  z-index: 99;
+}
 
 .bf2024_section image-with-text-block.image-with-text-block--small {
   flex-direction: column;

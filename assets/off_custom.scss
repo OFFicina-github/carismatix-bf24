@@ -3667,6 +3667,10 @@ div.shopify-section--main-blog {
   *, a, span, li, h1, p {
     color: #fff !important;
   }
+  & > section > .container {
+    position: relative;
+    z-index: 99;
+  }
 }
 
 $shadow : 0 0 50px rgba(76, 221, 14, 0.75);
