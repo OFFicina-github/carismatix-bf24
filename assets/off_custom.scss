@@ -3660,7 +3660,7 @@ h2.swym-wishlist-main-title:first-of-type {
 }
 div.shopify-section--main-blog {
   background-color: #0A1320;
-  * {
+  *, a, span, li, h1, p {
     color: #fff !important;
   }
 }
