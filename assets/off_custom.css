@@ -3425,6 +3425,7 @@ h2.swym-wishlist-main-title:first-of-type {
 
 div.shopify-section--main-blog {
   background-color: #0A1320;
+  padding-bottom: 40px;
 }
 div.shopify-section--main-blog *, div.shopify-section--main-blog a, div.shopify-section--main-blog span, div.shopify-section--main-blog li, div.shopify-section--main-blog h1, div.shopify-section--main-blog p {
   color: #fff !important;
