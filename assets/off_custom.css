@@ -3695,7 +3695,7 @@ product-sticky-form.product-sticky-form .select {
 }
 
 #collection {
-  background-color: #000;
+  background-color: #0a1320;
 }
 #collection .boost-pfs-filter-collection-header-wrapper {
   background-color: #1C232F;
@@ -3802,4 +3802,8 @@ footer.mini-cart__drawer-footer.drawer__footer.drawer__footer--tight.drawer__foo
 
 button[aria-label="FILTRA PER"] {
   color: #fff !important;
+}
+
+#collection .boost-pfs-filter-collection-header-wrapper {
+  background-color: #0a1320 !important;
 }/*# sourceMappingURL=off_custom.css.map */
