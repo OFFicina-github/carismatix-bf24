@@ -4044,12 +4044,16 @@ button[aria-label="FILTRA PER"] {
 }
 
 #search {
-  .div.boost-pfs-filter-default-toolbar-inner {
+  .boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky {
+    padding:10px;
+  }
+  div.boost-pfs-filter-default-toolbar-inner {
     background-color: #0a1320 !important;
     span, button {
       color:#fff !important;
     }
   }
+
   .boost-pfs-filter-product-bottom-inner {
     .boost-pfs-isw-subtitle, small, .boost-pfs-filter-product-item-vendor, .boost-pfs-filter-product-item-title {
       color: #fff !important;
