@@ -3715,7 +3715,7 @@ body#index .pulsanti_home.bf2024 {
   a.pulsante {
     min-width: 250px;
     box-shadow:$shadow_small;
-    background-color: #000;
+    background-color: #0A1320;
     background-image: url(https://cdn.shopify.com/s/files/1/0602/0975/8437/files/bg_pulsante_25_bf24.png?v=1731504725) !important;
     color:#fff;
     height: 140px;
@@ -3735,7 +3735,7 @@ body#index .pulsanti_home.bf2024 {
       font-size: 18px !important;
     }
     &:hover {
-      opacity: 0 !important;
+      opacity: 1 !important;
     }
   }
 }

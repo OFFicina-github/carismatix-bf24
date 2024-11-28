@@ -3480,7 +3480,7 @@ body#index .pulsanti_home.bf2024 {
 body#index .pulsanti_home.bf2024 a.pulsante {
   min-width: 250px;
   box-shadow: 0 0 20px rgba(76, 221, 14, 0.75);
-  background-color: #000;
+  background-color: #0A1320;
   background-image: url(https://cdn.shopify.com/s/files/1/0602/0975/8437/files/bg_pulsante_25_bf24.png?v=1731504725) !important;
   color: #fff;
   height: 140px;
@@ -3503,7 +3503,7 @@ body#index .pulsanti_home.bf2024 a.pulsante h6 {
   font-size: 18px !important;
 }
 body#index .pulsanti_home.bf2024 a.pulsante:hover {
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
 
 .tecniche_bf24 {
