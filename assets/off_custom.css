@@ -3827,6 +3827,13 @@ button[aria-label="FILTRA PER"] {
   background-color: #0a1320 !important;
 }
 
+.div.boost-pfs-filter-default-toolbar-inner {
+  background-color: #0a1320 !important;
+}
+.div.boost-pfs-filter-default-toolbar-inner span {
+  color: #fff;
+}
+
 .mega-menu {
   background-color: #1c232f !important;
 }
