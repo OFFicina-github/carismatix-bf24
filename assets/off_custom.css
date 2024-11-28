@@ -3830,8 +3830,8 @@ button[aria-label="FILTRA PER"] {
 #search .div.boost-pfs-filter-default-toolbar-inner {
   background-color: #0a1320 !important;
 }
-#search .div.boost-pfs-filter-default-toolbar-inner span {
-  color: #fff;
+#search .div.boost-pfs-filter-default-toolbar-inner span, #search .div.boost-pfs-filter-default-toolbar-inner button {
+  color: #fff !important;
 }
 
 .mega-menu {

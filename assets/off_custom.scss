@@ -4044,8 +4044,8 @@ button[aria-label="FILTRA PER"] {
 }
 #search .div.boost-pfs-filter-default-toolbar-inner {
   background-color: #0a1320 !important;
-  span {
-    color:#fff;
+  span, button {
+    color:#fff !important;
   }
 }
 
