@@ -2535,7 +2535,7 @@ body.san_valention_collection_prod h1.product-meta__title::before {
 
 .button-contattaci a {
   background-color: #4bdd0e !important;
-  color: #000 !important;
+  color: #0a1320 !important;
   padding: 10px 15px !important;
   margin-top: 10px;
   animation: shake 5s;
@@ -2916,7 +2916,7 @@ input#ptw-gift-needed {
 }
 #aca-modal #aca-modal-subheadline {
   grid-area: c;
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 @media (max-width: 940px) {
   #aca-modal #aca-modal-subheadline {
@@ -2979,7 +2979,7 @@ input#ptw-gift-needed {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000;
+  color: #0a1320;
   border-radius: 50vh;
   cursor: pointer;
 }
@@ -3354,7 +3354,7 @@ h2.swym-wishlist-main-title:first-of-type {
 @media (max-width: 999px) {
   #hero_bf2024 {
     padding-bottom: 260px;
-    background-color: #000;
+    background-color: #0a1320;
   }
 }
 #hero_bf2024 img {
@@ -3599,7 +3599,7 @@ body#index .pulsanti_home.bf2024 a.pulsante:hover {
   color: #eeeeee;
 }
 #product-custom .product__info input {
-  color: #000;
+  color: #0a1320;
 }
 #product-custom .product__info .price:not(.price--compare) {
   background-image: url(https://cdn.shopify.com/s/files/1/0602/0975/8437/files/dettaglio_prodotto_verde.png?v=1732272245);
@@ -3634,18 +3634,18 @@ body#index .pulsanti_home.bf2024 a.pulsante:hover {
 #product-custom #stamped-main-widget li::after,
 #product-custom #stamped-main-widget #stamped-sort-select,
 #product-custom #stamped-main-widget #stamped-reviews-tab {
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 #product-custom #stamped-main-widget li::after *,
 #product-custom #stamped-main-widget #stamped-sort-select *,
 #product-custom #stamped-main-widget #stamped-reviews-tab * {
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 #product-custom #stamped-reviews-tab {
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 #product-custom #stamped-reviews-tab * {
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 #product-custom h3 {
   color: #fff;
@@ -3713,10 +3713,10 @@ product-sticky-form.product-sticky-form .select {
   color: #fff;
 }
 #collection .boost-pfs-container-default-box .boost-pfs-filter-wrapper.boost-pfs-filter-wrapper-vertical-style-default .boost-pfs-filter-filter-dropdown {
-  color: #000;
+  color: #0a1320;
 }
 #collection .boost-pfs-container-default-box .boost-pfs-filter-wrapper.boost-pfs-filter-wrapper-vertical-style-default .boost-pfs-filter-filter-dropdown * {
-  color: #000;
+  color: #0a1320;
 }
 #collection .boost-pfs-container-default-box .boost-pfs-filter-wrapper.boost-pfs-filter-wrapper-vertical-style-default .boost-pfs-filter-product-item-vendor {
   color: #46cf0f;
@@ -3731,10 +3731,10 @@ product-sticky-form.product-sticky-form .select {
   box-shadow: 0 0 50px rgba(76, 221, 14, 0.75);
 }
 #collection .boost-pfs-filter-refine-by {
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 #collection .boost-pfs-filter-refine-by * {
-  color: #000 !important;
+  color: #0a1320 !important;
 }
 
 body#index #scroll_to_nl_natale {
@@ -3754,7 +3754,7 @@ body#index #scroll_to_nl_natale {
 }
 
 #shopify-section-mini-cart cart-drawer {
-  background-color: #000;
+  background-color: #0a1320;
   color: #fff;
 }
 #shopify-section-mini-cart cart-drawer * {
@@ -3769,7 +3769,7 @@ body#index #scroll_to_nl_natale {
   color: #fff;
 }
 #shopify-section-mini-cart header.drawer__header {
-  background-color: #000;
+  background-color: #0a1320;
   color: #fff;
 }
 
@@ -3790,7 +3790,7 @@ footer.mini-cart__drawer-footer.drawer__footer.drawer__footer--tight.drawer__foo
 }
 
 #cart {
-  background-color: #000;
+  background-color: #0a1320;
   color: #fff;
 }
 #cart * {
