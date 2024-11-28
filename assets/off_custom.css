@@ -3861,7 +3861,7 @@ button[aria-label="FILTRA PER"] {
 
 @media (max-width: 690px) {
   #rawa-button {
-    bottom: 60px !important;
+    bottom: 46px !important;
   }
 }
 .boost-pfs-filter-tree-mobile-button button:before, .boost-pfs-filter-custom-filter-button:before {
