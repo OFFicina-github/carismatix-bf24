@@ -4087,3 +4087,21 @@ button[aria-label="FILTRA PER"] {
     background-color: #313842;
   }
 }
+
+@media (max-width: 450px) {
+  #rawa-button {
+      bottom: 60px;
+  }
+}
+
+.boost-pfs-filter-tree-mobile-button button:before, .boost-pfs-filter-custom-filter-button:before {
+  background-color: #fff !important;
+  border-radius:2px;
+}
+
+.boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky {
+  background-color: #fff !important;
+  .boost-pfs-filter-mobile-toolbar-header {
+    background-color: #fff !important;
+  }
+}
