@@ -3813,4 +3813,11 @@ button[aria-label="FILTRA PER"] {
 }
 .mega-menu .container a {
   color: #fff !important;
+}
+
+.nav-dropdown {
+  background-color: #0a1320 !important;
+}
+.nav-dropdown a {
+  color: #fff !important;
 }/*# sourceMappingURL=off_custom.css.map */
