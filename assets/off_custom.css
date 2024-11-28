@@ -3831,7 +3831,7 @@ button[aria-label="FILTRA PER"] {
   padding: 10px;
 }
 #search div.boost-pfs-filter-default-toolbar-inner {
-  background-color: #0a1320 !important;
+  background-color: #1c232f !important;
 }
 #search div.boost-pfs-filter-default-toolbar-inner span, #search div.boost-pfs-filter-default-toolbar-inner button {
   color: #fff !important;
