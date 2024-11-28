@@ -76,7 +76,7 @@ body {
 }
 
 .product .product__info .price--highlight {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .product .product__info .label--highlight {
@@ -100,7 +100,7 @@ body {
 }
 
 .product .product-meta .product-meta__vendor {
-  color: #4BDD0E;
+  color: #fff;
   display: flex;
   align-items: flex-start;
 }
