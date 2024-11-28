@@ -3843,4 +3843,7 @@ button[aria-label="FILTRA PER"] {
 }
 #mobile-menu-drawer .drawer__footer::before {
   content: none !important;
+}
+#mobile-menu-drawer a.icon-text {
+  color: #fff;
 }/*# sourceMappingURL=off_custom.css.map */
