@@ -3809,7 +3809,7 @@ button[aria-label="FILTRA PER"] {
 }
 
 .mega-menu {
-  background-color: #0a1320 !important;
+  background-color: #313842 !important;
 }
 .mega-menu .container {
   background-color: #0a1320 !important;
@@ -3819,7 +3819,7 @@ button[aria-label="FILTRA PER"] {
 }
 
 .nav-dropdown {
-  background-color: #0a1320 !important;
+  background-color: #313842 !important;
 }
 .nav-dropdown a {
   color: #fff !important;
@@ -3830,7 +3830,7 @@ button[aria-label="FILTRA PER"] {
 }
 
 #mobile-menu-drawer {
-  background-color: #0a1320;
+  background-color: #313842;
 }
 #mobile-menu-drawer .mobile-nav__link {
   color: #fff;
@@ -3870,10 +3870,10 @@ button[aria-label="FILTRA PER"] {
 }
 
 .boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky {
-  background-color: #0a1320 !important;
+  background-color: #313842 !important;
 }
 .boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky .boost-pfs-filter-mobile-toolbar-header {
-  background-color: #0a1320 !important;
+  background-color: #313842 !important;
   color: #fff !important;
 }
 .boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky .boost-pfs-filter-option-value {
