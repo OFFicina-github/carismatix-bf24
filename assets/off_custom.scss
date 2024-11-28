@@ -4039,10 +4039,13 @@ button[aria-label="FILTRA PER"] {
   background-color: #0a1320 !important;
 }
 
-.mega-menu .container {
+.mega-menu {
   background-color: #0a1320 !important;
-  a {
-    color: #fff !important;
+  .container {
+    background-color: #0a1320 !important;
+    a {
+      color: #fff !important;
+    }
   }
 }
 .nav-dropdown {
