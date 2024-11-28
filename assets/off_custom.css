@@ -3823,4 +3823,8 @@ button[aria-label="FILTRA PER"] {
 }
 .nav-dropdown a {
   color: #fff !important;
+}
+
+.boost-pfs-filter-collection-header-wrapper .boost-pfs-filter-collection-description {
+  color: #fff;
 }/*# sourceMappingURL=off_custom.css.map */
