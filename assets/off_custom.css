@@ -3827,4 +3827,20 @@ button[aria-label="FILTRA PER"] {
 
 .boost-pfs-filter-collection-header-wrapper .boost-pfs-filter-collection-description {
   color: #fff !important;
+}
+
+#mobile-menu-drawer {
+  background-color: #0a1320;
+}
+#mobile-menu-drawer .mobile-nav__link {
+  color: #fff;
+}
+#mobile-menu-drawer .drawer__header {
+  background-color: #0a1320;
+}
+#mobile-menu-drawer button.drawer__close-button {
+  color: #fff;
+}
+#mobile-menu-drawer .drawer__footer::before {
+  content: none !important;
 }/*# sourceMappingURL=off_custom.css.map */

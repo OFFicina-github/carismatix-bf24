@@ -4057,3 +4057,19 @@ button[aria-label="FILTRA PER"] {
 .boost-pfs-filter-collection-header-wrapper .boost-pfs-filter-collection-description {
   color: #fff !important;
 }
+#mobile-menu-drawer {
+  background-color: #0a1320;
+  .mobile-nav__link {
+    color: #fff;
+  }
+  .drawer__header {
+    background-color: #0a1320;
+
+  }
+  button.drawer__close-button {
+    color: #fff;
+  }
+  .drawer__footer::before {
+    content:none !important;
+  }
+}
