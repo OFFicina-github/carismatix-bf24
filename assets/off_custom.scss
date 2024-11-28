@@ -4088,9 +4088,9 @@ button[aria-label="FILTRA PER"] {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 690px) {
   #rawa-button {
-      bottom: 60px;
+      bottom: 60px !important;
   }
 }
 
