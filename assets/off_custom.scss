@@ -3920,7 +3920,8 @@ product-sticky-form.product-sticky-form {
   }
 }
 
-#collection {
+#collection,
+#search {
   background-color:#0a1320;
   .boost-pfs-filter-collection-description {
     p:last-child {
@@ -4036,6 +4037,9 @@ button[aria-label="FILTRA PER"] {
 }
 
 #collection .boost-pfs-filter-collection-header-wrapper {
+  background-color: #0a1320 !important;
+}
+#search .boost-pfs-filter-collection-header-wrapper {
   background-color: #0a1320 !important;
 }
 
