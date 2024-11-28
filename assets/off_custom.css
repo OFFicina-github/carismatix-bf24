@@ -3874,4 +3874,11 @@ button[aria-label="FILTRA PER"] {
 }
 .boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky .boost-pfs-filter-mobile-toolbar-heade {
   background-color: #0a1320 !important;
+}
+.boost-pfs-filter-tree-mobile-style3.boost-pfs-filter-tree-mobile-sticky .boost-pfs-filter-option-value {
+  color: #fff !important;
+}
+
+.boost-pfs-filter-option-item-list.boost-pfs-filter-option-item-list-multiple-list li .boost-pfs-check-box {
+  border: 1px solid #fff;
 }/*# sourceMappingURL=off_custom.css.map */
