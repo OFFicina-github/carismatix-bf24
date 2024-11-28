@@ -3886,4 +3886,13 @@ button[aria-label="FILTRA PER"] {
 
 .mega-menu__title {
   color: #fff !important;
+}
+
+.product-tabs h4, .product-tabs h3 {
+  color: #fff !important;
+}
+
+div.shopify-section--main-blog > section > .container {
+  position: relative;
+  z-index: 1;
 }/*# sourceMappingURL=off_custom.css.map */
