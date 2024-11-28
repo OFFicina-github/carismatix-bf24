@@ -3827,10 +3827,10 @@ button[aria-label="FILTRA PER"] {
   background-color: #0a1320 !important;
 }
 
-.div.boost-pfs-filter-default-toolbar-inner {
+#search .div.boost-pfs-filter-default-toolbar-inner {
   background-color: #0a1320 !important;
 }
-.div.boost-pfs-filter-default-toolbar-inner span {
+#search .div.boost-pfs-filter-default-toolbar-inner span {
   color: #fff;
 }
 
