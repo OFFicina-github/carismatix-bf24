@@ -4076,3 +4076,14 @@ button[aria-label="FILTRA PER"] {
     color: #fff;
   }
 }
+
+.subcategory-area .subcategory-btn {
+  background-color: #313842;
+  color: #fff;
+  &::before {
+    background-color: #313842;
+  }
+  &::after {
+    background-color: #313842;
+  }
+}

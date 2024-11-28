@@ -3846,4 +3846,15 @@ button[aria-label="FILTRA PER"] {
 }
 #mobile-menu-drawer a.icon-text {
   color: #fff;
+}
+
+.subcategory-area .subcategory-btn {
+  background-color: #313842;
+  color: #fff;
+}
+.subcategory-area .subcategory-btn::before {
+  background-color: #313842;
+}
+.subcategory-area .subcategory-btn::after {
+  background-color: #313842;
 }/*# sourceMappingURL=off_custom.css.map */
