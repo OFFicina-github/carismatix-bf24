@@ -3833,7 +3833,7 @@ button[aria-label="FILTRA PER"] {
 #search .div.boost-pfs-filter-default-toolbar-inner span, #search .div.boost-pfs-filter-default-toolbar-inner button {
   color: #fff !important;
 }
-#search .boost-pfs-filter-product-bottom-inner .boost-pfs-isw-subtitle, #search .boost-pfs-filter-product-bottom-inner small, #search .boost-pfs-filter-product-bottom-inner .boost-pfs-filter-product-item-vendor {
+#search .boost-pfs-filter-product-bottom-inner .boost-pfs-isw-subtitle, #search .boost-pfs-filter-product-bottom-inner small, #search .boost-pfs-filter-product-bottom-inner .boost-pfs-filter-product-item-vendor, #search .boost-pfs-filter-product-bottom-inner .boost-pfs-filter-product-item-title {
   color: #fff !important;
 }
 
