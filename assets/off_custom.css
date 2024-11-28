@@ -3826,5 +3826,5 @@ button[aria-label="FILTRA PER"] {
 }
 
 .boost-pfs-filter-collection-header-wrapper .boost-pfs-filter-collection-description {
-  color: #fff;
+  color: #fff !important;
 }/*# sourceMappingURL=off_custom.css.map */
