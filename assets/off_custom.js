@@ -374,8 +374,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .querySelectorAll("combo-box .combo-box__option-item")
     .forEach(function (item) {
-      item.addEventListener("click", handleChange);
-      item.addEventListener("keyup", handleChange);
+      //item.addEventListener("click", handleChange);
+      //item.addEventListener("keyup", handleChange);
     });
 
   function handleChange() {
