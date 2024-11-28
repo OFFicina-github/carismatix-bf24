@@ -3798,4 +3798,8 @@ footer.mini-cart__drawer-footer.drawer__footer.drawer__footer--tight.drawer__foo
 }
 #cart .cart__recap {
   background-color: #1C232F;
+}
+
+button[aria-label="FILTRA PER"] {
+  color: #fff !important;
 }/*# sourceMappingURL=off_custom.css.map */
