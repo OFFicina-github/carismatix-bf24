@@ -3927,4 +3927,8 @@ button[aria-label="FILTRA PER"] {
 div.shopify-section--main-blog > section > .container {
   position: relative;
   z-index: 1;
+}
+
+.faq button[is=toggle-button] {
+  color: #0A1320;
 }/*# sourceMappingURL=off_custom.css.map */
